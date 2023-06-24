@@ -2,20 +2,51 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Title{
+  height: 100%;
+  width: 100%;
+  font-family: monospace;
+  font-size: 70px;
+  display: inline-block;
+  animation: 0.5s ease-out 0s 1 Slide-In-Down;
+  position: relative;
+  transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.Moved-Title{
+    height: 100%;
+    width: 100%;
+    font-family: monospace;
+    font-size: 70px;
+    display: inline-block;
+    animation: 1s ease-out 0s 1 Slide-In-Up;
+    position: relative;
+}
+.Title.loaded {
+  top: -20px; /* Adjust the desired distance for the label to move up smoothly */
+  opacity: 1;
+}
+@keyframes Slide-In-Down {
+  0%{
+    transform: translateY(-1000%);
+  }
+  100%{
+    transform: translateY(0%);
   }
 }
+@keyframes Slide-In-Up {
+  0%{
+    transform: translateY(205%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+
 
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,16 +54,131 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.App-Header-Sunny
+{
+  background-color: #282c34;
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  animation: Change-To-Sunny 5s;
+  animation-fill-mode: forwards;
+}
+@keyframes Appear-From-Bottom {
+  0%{
+    transform: scaleY(0%)
+  }
+  100%{
+    transform: scaleY(100%);
+  }
+}
+@keyframes Appear-From-Top {
+  0%{
+    transform: scaleY(-100%)
+  }
+  100%{
+    transform: scaleY(0%);
+  }
+}
+@keyframes Change-To-Sunny
+{
+  0%{
+    background-color: #282c34;
+    color: white;
+  }
+  100%{
+    background-color: #A3dcff;
+    color: darkblue;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
+@keyframes movelogo 
+{
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+
+
+.Sunny-Logo{
+
+  width:300px;
+  height:300px;
+  position: relative;
+  top: -40px;
+  animation: sun-spin 5s infinite linear,FadeIn 5s;
+}
+@keyframes sun-spin {
+  0%{
     transform: rotate(0deg);
   }
-  to {
+  100%{
     transform: rotate(360deg);
   }
 }
+
+@keyframes FadeIn {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }  
+}
+.Weather-Button {
+  background-color: #4c95af; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -ms-progress-appearance: #1d282c;
+  border : 2px solid #39464b;         
+}
+@keyframes FadeOut {
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+.Weather-Button:hover{
+  background-color: #79dcdce6;
+  color: black
+}
+.Weather-Button:focus{
+  background-color: #1d282c;
+  color: white;
+  animation: FadeOut 2s ease-in;
+  animation-fill-mode: forwards
+}
+
+.Pressed-button{
+  background-color: lightgray; 
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -ms-progress-appearance: #1d282c;
+  border : 2px solid #39464b;
+}
+
+
+.App-link {
+  position:absolute;
+  bottom:3px;
+  right: 3px;
+}
+
